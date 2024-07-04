@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User - Login and Register</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h2>User - Login and Register</h2>
+        <h2>RJ-RAJU</h2>
         <nav>
             <a href="#">Home</a>
             <a href="#">About</a>
@@ -20,5 +21,18 @@
             <button type="button">REGISTER</button>
         </div>
     </header>
+    <div class="popup-container">
+        <div class="popup">
+            <form method="#" action="#">
+                <h2>
+                    <span>USER LOGIN</span>
+                    <button type="reset">X</button>
+                </h2>
+                <input type="text" placeholder="E-mail or Username">
+                <input type="text" placeholder="Password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
