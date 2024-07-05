@@ -27,14 +27,14 @@
     </header>
     <div class="popup-container" id="login-popup">
         <div class="popup">
-            <form method="#" action="#">
+            <form method="POST" action="login_register.php">
                 <h2>
                     <span>USER LOGIN</span>
                     <button type="reset" onclick="popup('login-popup')">X</button>
                 </h2>
-                <input type="text" placeholder="E-mail or Username">
-                <input type="text" placeholder="Password">
-                <button type="submit" class="login-btm">Login</button>
+                <input type="text" placeholder="E-mail or Username" name="email-username">
+                <input type="text" placeholder="Password" name="password">
+                <button type="submit" class="login-btm" name="login-btn">Login</button>
             </form>
         </div>
     </div>
@@ -42,16 +42,16 @@
     <!-- user Register form here  -->
     <div class="popup-container" id="register-popup">
         <div class="register popup">
-            <form method="#" action="#">
+            <form method="POST" action="login_register.php">
                 <h2>
                     <span>USER REGISTER</span>
                     <button type="reset" onclick="popup('register-popup')">X</button>
                 </h2>
-                <input type="text" placeholder="Full Name">
-                <input type="text" placeholder="Username">
-                <input type="email" placeholder="E-mail">
-                <input type="text" placeholder="Password">
-                <button type="submit" class="register-btm">Register</button>
+                <input type="text" placeholder="Full Name" name="full-name">
+                <input type="text" placeholder="Username" name="username">
+                <input type="email" placeholder="E-mail" name="email">
+                <input type="text" placeholder="Password" name="password">
+                <button type="submit" class="register-btm" name="register-btn">Register</button>
             </form>
         </div>
     </div>
