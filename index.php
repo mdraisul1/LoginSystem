@@ -32,7 +32,7 @@
                     <span>USER LOGIN</span>
                     <button type="reset" onclick="popup('login-popup')">X</button>
                 </h2>
-                <input type="text" placeholder="E-mail or Username" name="email-username">
+                <input type="text" placeholder="E-mail or Username" name="username">
                 <input type="text" placeholder="Password" name="password">
                 <button type="submit" class="login-btm" name="login-btn">Login</button>
             </form>
@@ -47,7 +47,7 @@
                     <span>USER REGISTER</span>
                     <button type="reset" onclick="popup('register-popup')">X</button>
                 </h2>
-                <input type="text" placeholder="Full Name" name="full-name">
+                <input type="text" placeholder="Full Name" name="full_name">
                 <input type="text" placeholder="Username" name="username">
                 <input type="email" placeholder="E-mail" name="email">
                 <input type="text" placeholder="Password" name="password">
