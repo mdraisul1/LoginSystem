@@ -11,12 +11,17 @@ if(isset($_POST['register'])){
             #username or email already exist
             $result_fetch = mysqli_fetch_assoc($user_exist_result);
             if($result_fetch['username'] == $_POST['username']){
+                #username already exist
                 echo "
                 <script>alert('Username already exist');
                     window.location.href = 'index.php';
                 </script>";
             }else{
-
+                #error for email already exist
+                echo "
+                <script>alert('Email already exist');
+                    window.location.href = 'index.php';
+                </script>";
             }
         }else{
 
