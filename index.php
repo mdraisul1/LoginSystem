@@ -1,3 +1,7 @@
+<?php
+    require('connection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,22 +21,49 @@
             <a href="#">Contact</a>
         </nav>
         <div class="sign-in-up">
-            <button type="button">LOGIN</button>
-            <button type="button">REGISTER</button>
+            <button type="button" onclick="popup('login-popup')">LOGIN</button>
+            <button type="button" onclick="popup('register-popup')">REGISTER</button>
         </div>
     </header>
-    <div class="popup-container">
+    <div class="popup-container" id="login-popup">
         <div class="popup">
             <form method="#" action="#">
                 <h2>
                     <span>USER LOGIN</span>
-                    <button type="reset">X</button>
+                    <button type="reset" onclick="popup('login-popup')">X</button>
                 </h2>
                 <input type="text" placeholder="E-mail or Username">
                 <input type="text" placeholder="Password">
-                <button type="submit">Login</button>
+                <button type="submit" class="login-btm">Login</button>
             </form>
         </div>
     </div>
+
+    <!-- user Register form here  -->
+    <div class="popup-container" id="register-popup">
+        <div class="register popup">
+            <form method="#" action="#">
+                <h2>
+                    <span>USER REGISTER</span>
+                    <button type="reset" onclick="popup('register-popup')">X</button>
+                </h2>
+                <input type="text" placeholder="Full Name">
+                <input type="text" placeholder="Username">
+                <input type="email" placeholder="E-mail">
+                <input type="text" placeholder="Password">
+                <button type="submit" class="register-btm">Register</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function popup(popup_name){
+            get_popup = document.getElementById(popup_name);
+            if(get_popup.style.display=="flex"){
+                get_popup.style.display="none";
+            }else{
+                get_popup.style.display="flex"
+            }
+        }
+    </script>
 </body>
 </html>

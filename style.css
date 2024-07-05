@@ -38,4 +38,87 @@ header .sign-in-up button:last-child{
     background-color: #fa9579;
 }
 
+.popup-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.popup-container .popup{
+    background-color: #f0f0f0;
+    width: 350px;
+    padding: 20px 25px 30px 25px;
+    border-radius: 5px;
+}
+
+.popup-container .popup h2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    color: #30475e;
+}
+
+.popup-container .popup h2 button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #797775;
+}
+
+.popup-container .popup input{
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #30475e;
+    border-radius: 0;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 550;
+    outline: none;
+}
+
+.popup-container .popup .login-btm,
+.popup-container .register .register-btm{
+    font-weight: 550;
+    font-size: 15px;
+    color: #fff;
+    background-color: #30475e;
+    padding: 6px 10px;
+    border: none;
+    outline: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.popup-container .register{
+    background-color: #edeef7;
+}
+
+.popup-container .register h2{
+    color: #fa9579;
+}
+
+.popup-container .register input{
+    border-bottom-color: #fa9579;
+}
+
+.popup-container .register .register-btm{
+    background-color: #fa9579;
+}
+
+
+
 
