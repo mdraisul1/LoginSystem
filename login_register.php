@@ -1,52 +1,67 @@
 <?php 
-
 require 'connection.php';
 
-if(isset($_POST['register'])){
-    $user_exist_query = "SELECT * FORM `register` WHERE `username` = '$_POST[username]' OR `email` = '$_POST[email]'";
-    $user_exist_result = mysqli_query($con, $user_exist_query);
+if(isset($_POST['register-btn'])) {
+    // Use prepared statements to prevent SQL injection
+    $stmt = $con->prepare("SELECT * FROM `register` WHERE `username` = ? OR `email` = ?");
+    $stmt->bind_param("ss", $_POST['username'], $_POST['email']);
+    $stmt->execute();
+    $user_exist_result = $stmt->get_result();
 
-    if($user_exist_result){
-        #check if username or email already exist
-        if(mysqli_num_rows($user_exist_result) > 0){
-            #username or email already exist
+    if($user_exist_result) {
+        # Check if username or email already exists
+        if(mysqli_num_rows($user_exist_result) > 0) {
+            # Username or email already exists
             $result_fetch = mysqli_fetch_assoc($user_exist_result);
-            if($result_fetch['username'] == $_POST['username']){
-                #username already exist
+            if($result_fetch['username'] == $_POST['username']) {
+                # Username already exists
                 echo "
-                <script>alert('Username already exist');
+                <script>
+                    alert('Username already exists');
                     window.location.href = 'index.php';
                 </script>";
-            }else{
-                #error for email already exist
+            } else {
+                # Email already exists
                 echo "
-                <script>alert('Email already exist');
+                <script>
+                    alert('Email already exists');
                     window.location.href = 'index.php';
                 </script>";
             }
-        }else{
-            #insert query
-            $query_insert = "INSERT INTO `register`(`ID`, `first_name`, `username`, `email`, `password`) VALUES ('[value-1]','[$_POST[first_name]', '$_POST[username]', '$_POST[email]', '$_POST[password]')";
+        } else {
+            # Insert query
+            $hashed_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-            if(mysqli_query($con, $query_insert)){
-                #if data is inserted successfully
+            $stmt = $con->prepare("INSERT INTO `register`(`first_name`, `username`, `email`, `password`) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $_POST['full-name'], $_POST['username'], $_POST['email'], $hashed_password);
+
+            if($stmt->execute()) {
+                # If data is inserted successfully
                 echo "
-                <script>alert('Data inserted successfully');
+                <script>
+                    alert('Data inserted successfully');
                     window.location.href = 'index.php';
                 </script>";
-            }else{
-                #if data cannot be inserted
+            } else {
+                # If data cannot be inserted
                 echo "
-                <script>alert('Cannot run query');
+                <script>
+                    alert('Cannot run query');
                     window.location.href = 'index.php';
                 </script>";
             }
         }
-    }else{
+    } else {
         echo "
-        <script>alert('Cannot run query');
+        <script>
+            alert('Cannot run query');
             window.location.href = 'index.php';
         </script>";
     }
 }
 
+if(isset($_POST['login-btn'])) {
+    // Handle login logic here
+    // Note: Make sure to use prepared statements and password_verify for login
+}
+?>

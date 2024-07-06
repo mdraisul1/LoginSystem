@@ -32,14 +32,13 @@
                     <span>USER LOGIN</span>
                     <button type="reset" onclick="popup('login-popup')">X</button>
                 </h2>
-                <input type="text" placeholder="E-mail or Username" name="username">
-                <input type="text" placeholder="Password" name="password">
+                <input type="text" placeholder="E-mail or Username" name="email-username">
+                <input type="password" placeholder="Password" name="password">
                 <button type="submit" class="login-btm" name="login-btn">Login</button>
             </form>
         </div>
     </div>
 
-    <!-- user Register form here  -->
     <div class="popup-container" id="register-popup">
         <div class="register popup">
             <form method="POST" action="login_register.php">
@@ -47,21 +46,21 @@
                     <span>USER REGISTER</span>
                     <button type="reset" onclick="popup('register-popup')">X</button>
                 </h2>
-                <input type="text" placeholder="Full Name" name="full_name">
+                <input type="text" placeholder="Full Name" name="full-name">
                 <input type="text" placeholder="Username" name="username">
                 <input type="email" placeholder="E-mail" name="email">
-                <input type="text" placeholder="Password" name="password">
+                <input type="password" placeholder="Password" name="password">
                 <button type="submit" class="register-btm" name="register-btn">Register</button>
             </form>
         </div>
     </div>
     <script>
-        function popup(popup_name){
-            get_popup = document.getElementById(popup_name);
-            if(get_popup.style.display=="flex"){
-                get_popup.style.display="none";
-            }else{
-                get_popup.style.display="flex"
+        function popup(popup_name) {
+            let get_popup = document.getElementById(popup_name);
+            if (get_popup.style.display == "flex") {
+                get_popup.style.display = "none";
+            } else {
+                get_popup.style.display = "flex";
             }
         }
     </script>
