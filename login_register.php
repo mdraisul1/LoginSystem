@@ -1,6 +1,52 @@
 <?php 
+
 require 'connection.php';
 
+// login form logic
+if(isset($_POST['login-btn'])) {
+    // Use prepared statements to prevent SQL injection
+    $stmt = $con->prepare("SELECT * FROM `register` WHERE `username` = ?");
+    $stmt->bind_param("s", $_POST['username']);
+    $stmt->execute();
+    $user_exist_result = $stmt->get_result();
+
+    if($user_exist_result) {
+        // Check if username exists
+        if(mysqli_num_rows($user_exist_result) > 0) {
+            // Username exists
+            $result_fetch = mysqli_fetch_assoc($user_exist_result);
+            if(password_verify($_POST['password'], $result_fetch['password'])) {
+                // Password is correct
+                $_SESSION['logged_in'] = true;
+                $_SESSION['username'] = $result_fetch['username'];
+                header("location: index.php");
+            } else {
+                // Password is incorrect
+                echo "
+                <script>
+                    alert('Password is incorrect');
+                    window.location.href = 'index.php';
+                </script>";
+            }
+        } else {
+            // Username does not exist
+            echo "
+            <script>
+                alert('Username does not exist');
+                window.location.href = 'index.php';
+            </script>";
+        }    
+    } else {
+        echo " 
+        <script>
+            alert('Cannot run query');
+            window.location.href = 'index.php';
+        </script>";
+    }
+}
+
+
+// register form logic
 if(isset($_POST['register-btn'])) {
     // Use prepared statements to prevent SQL injection
     $stmt = $con->prepare("SELECT * FROM `register` WHERE `username` = ? OR `email` = ?");

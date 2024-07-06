@@ -32,7 +32,7 @@
                     <span>USER LOGIN</span>
                     <button type="reset" onclick="popup('login-popup')">X</button>
                 </h2>
-                <input type="text" placeholder="E-mail or Username" name="email-username">
+                <input type="text" placeholder="E-mail or Username" name="username">
                 <input type="password" placeholder="Password" name="password">
                 <button type="submit" class="login-btm" name="login-btn">Login</button>
             </form>
@@ -54,6 +54,14 @@
             </form>
         </div>
     </div>
+
+    <?php
+        session_start();
+        if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+            echo "<h2 style='text-align: center; margin-top: 200px;'> Welcome To RJ-RAJU - " . $_SESSION['username'] . "</h2>";
+        }
+    ?>
+
     <script>
         function popup(popup_name) {
             let get_popup = document.getElementById(popup_name);
